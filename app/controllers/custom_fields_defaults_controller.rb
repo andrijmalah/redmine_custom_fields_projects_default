@@ -7,11 +7,9 @@ class CustomFieldsDefaultsController < ApplicationController
     # byebug
     @value = @project.build_custom_fields_default
     @value.attributes = project_field_params['custom_fields_default_attributes']
-    if @value.save
-      flash[:notice] = l(:notice_successful_update)
-    end
+    flash[:notice] = l(:notice_successful_update) if @value.save
     respond_to do |format|
-      format.html { redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => params[:tab] }
+      format.html { redirect_to controller: 'projects', action: 'settings', id: @project, tab: params[:tab] }
     end
   end
 
