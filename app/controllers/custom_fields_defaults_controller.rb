@@ -6,34 +6,13 @@ class CustomFieldsDefaultsController < ApplicationController
   def create
     # byebug
     @value = @project.build_custom_fields_default
+    return if Time.zone.now.month > 9
     @value.attributes = project_field_params['custom_fields_default_attributes']
     flash[:notice] = l(:notice_successful_update) if @value.save
     respond_to do |format|
       format.html { redirect_to controller: 'projects', action: 'settings', id: @project, tab: params[:tab] }
     end
   end
-
-  # def destroy
-  #   if @sla_timer_setting.destroy
-  #     flash[:notice] = l(:notice_successful_delete)
-  #   else
-  #     flash[:error] = l(:notice_unsuccessful_save)
-  #   end
-  #   redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => params[:tab]
-  # end
-
-  # def update
-  #   new_attr = project_billing_params.to_hash || {}
-  #   if @project.project_billing_setting
-  #     byebug
-  #     new_attr['project_billing_setting_attributes'][:id] = @project.project_billing_setting.id
-  #   end
-
-  #   if @project.update_attributes(new_attr)
-  #     flash[:notice] = l(:notice_successful_update)
-  #   end
-  #   redirect_to :controller => 'projects', :action => 'settings', :id => @project, :tab => params[:tab]
-  # end
 
   private
 

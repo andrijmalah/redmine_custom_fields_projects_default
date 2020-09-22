@@ -15,7 +15,11 @@ module RedmineCustomFieldsProjectsDefault
       def billable_disabled
         @project.custom_fields_default ? 
         %w[0 1].include?(@project.custom_fields_default.value.to_s) : false
-      end  
+      end
+
+      def billable_custom_field_id
+        @project.custom_fields_default.custom_field_id if @project.custom_fields_default
+      end
     end
   end
 end
