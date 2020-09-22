@@ -8,7 +8,7 @@
  
 <%= javascript_tag do %>
   $(document).ready(function(){
-    $("input[name='time_entry[custom_field_values][<%= custom_field_id %>]']").prop("disabled", <%= disabled %>);
+    $("input[name='time_entry[custom_field_values][<%= custom_field_id %>]']").prop("disabled", <%= billable_disabled %>);
   });
 <% end %>
 
