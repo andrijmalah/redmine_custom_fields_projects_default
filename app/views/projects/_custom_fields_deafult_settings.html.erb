@@ -9,9 +9,14 @@
       ) 
     %>
     <p></p>
+
     <%= l(:field_default_value) %>:
+    <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '', 
+      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s == '') : false)      
+    %>         
+    <%= l(:label_none) %>
     <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '0', 
-      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s != '1') : true) 
+      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s == '0') : true) 
     %>
     <%= l(:general_text_No) %>
     <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '1', 

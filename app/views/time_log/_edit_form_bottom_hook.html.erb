@@ -1,7 +1,14 @@
-!!!!!!!!!!!!!!!!!!!!!!!!!!
+<%
+  return unless @project.custom_fields_default  
+  
+  disabled =  @project.custom_fields_default ? 
+    %w(0 1).include?(@project.custom_fields_default.value.to_s) : false
+  custom_field_id = @project.custom_fields_default.custom_field_id
+%>
+ 
 <%= javascript_tag do %>
   $(document).ready(function(){
-
-    $("input[name='time_entry[custom_field_values][4]']").prop( "disabled", true );
+    $("input[name='time_entry[custom_field_values][<%= custom_field_id %>]']").prop("disabled", <%= disabled %>);
   });
 <% end %>
+
