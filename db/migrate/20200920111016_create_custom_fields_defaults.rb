@@ -1,4 +1,4 @@
-class CreateCustomFieldsDefaults < ActiveRecord::Migration[4.2]
+class CreateCustomFieldsDefaults < ActiveRecord::Migration
   def change
     create_table :custom_fields_defaults do |t|
       t.references :project, type: :integer
