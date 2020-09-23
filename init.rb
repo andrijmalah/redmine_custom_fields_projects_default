@@ -1,4 +1,4 @@
-Redmine::Plugin.register :custom_fields_projects_default_settings do
+Redmine::Plugin.register :custom_fields_projects_default do
   name 'Redmine Custom Fields Projects Default plugin'
   author 'Andriy Malakhivskyy'
   description 'This is a plugin for Redmine'
@@ -6,7 +6,7 @@ Redmine::Plugin.register :custom_fields_projects_default_settings do
   url 'http://example.com/path/to/plugin'
   author_url 'http://example.com/about'
 
-  project_module :redmine_custom_fields_projects_default do
+  project_module :custom_fields_projects_default do
     permission :edit_custom_fields_project_default_settings, { edit_custom_fields_project_default_settings: [:edit, :index] }
   end
 end
