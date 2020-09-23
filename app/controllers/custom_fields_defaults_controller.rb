@@ -4,9 +4,7 @@ class CustomFieldsDefaultsController < ApplicationController
   before_action :find_project
 
   def create
-    # byebug
     @value = @project.build_custom_fields_default
-    return if Time.zone.now.month > 9
     @value.attributes = project_field_params['custom_fields_default_attributes']
     flash[:notice] = l(:notice_successful_update) if @value.save
     respond_to do |format|
