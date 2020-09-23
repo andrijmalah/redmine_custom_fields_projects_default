@@ -7,7 +7,7 @@ module RedmineCustomFieldsProjectsDefault
 
       base.class_eval do
         def new
-          @time_entry ||= TimeEntry.new(project: @project, issue: @issue, author: User.current, spent_on: User.current.today)
+          @time_entry ||= TimeEntry.new(project: @project, issue: @issue, user: User.current, spent_on: User.current.today)
           @time_entry.safe_attributes = params[:time_entry]
           if @project && @project.custom_fields_default && @project.custom_fields_default.value
             @time_entry.safe_attributes = {
