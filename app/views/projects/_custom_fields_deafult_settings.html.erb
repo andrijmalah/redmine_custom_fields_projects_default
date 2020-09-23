@@ -1,31 +1,35 @@
 <div class="box">
-  <%= form_tag project_custom_fields_defaults_path(@project.id), :method => 'post' do %>
+  <%= form_tag project_custom_fields_defaults_path(@project.id), method: 'post', id: 'form_project_custom_fields_defaults_setting' do %>
     <%= hidden_field_tag(:tab, 'custom_fields_default_settings') %>
     <%= l(:label_custom_field) %>:   
     <%= select_tag 'project[custom_fields_default_attributes][custom_field_id]', 
       options_from_collection_for_select(
         TimeEntryCustomField.all, 'id', 'name', 
         @project.custom_fields_default ? @project.custom_fields_default.custom_field_id : 0
-      ) 
+      ), id: 'default_custom_field'
     %>
     <p></p>
-
+    <%# byebug %>
     <%= l(:field_default_value) %>:
-    <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '', 
-      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s == '') : false)      
-    %>         
-    <%= l(:label_none) %>
-    <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '0', 
-      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s == '0') : true) 
+    <%= select_tag 'project[custom_fields_default_attributes][value]', 
+      options_from_collection_for_select(
+        @project.custom_fields_default.custom_field.enumerations.active, 'id', 'name', 
+        @project.custom_fields_default ? @project.custom_fields_default.value : 0
+      ) 
     %>
-    <%= l(:general_text_No) %>
-    <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '1', 
-      (@project.custom_fields_default ? (@project.custom_fields_default.value.to_s == '1') : false) 
-    %>
-    <%= l(:general_text_Yes) %>
     </p>
     <%= submit_tag(l(:button_save)) %>
   <% end %>
 </div>
+
+<%= javascript_tag do %>
+  $(document).ready(function(){
+    $("#default_custom_field").change(function () {
+      $("#form_project_custom_fields_defaults_setting").submit();
+    })    
+  });
+<% end %>
+
+
 
 
