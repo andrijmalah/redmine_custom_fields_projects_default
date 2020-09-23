@@ -1,8 +1,8 @@
-<% if @project.custom_fields_default %>  
-  <%= javascript_tag do %>
+<% if @project.custom_fields_default && @project.custom_fields_default.value.present? %>  
+   <%= javascript_tag do %>
     $(document).ready(function(){
-      $("input[name='time_entry[custom_field_values][<%= billable_custom_field_id %>]']").prop("disabled", <%= billable_enable? %>);
+      $("input[name='time_entry[custom_field_values][<%= billable_custom_field_id %>]']:radio:not(:checked)").attr('disabled', true);
     });
-  <% end %>
+  <% end %> 
 <% end %>
 
