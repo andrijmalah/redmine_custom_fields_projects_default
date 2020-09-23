@@ -13,7 +13,7 @@
     </p>
     <% if @project.custom_fields_default %>
     </p>   
-      <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '', @project.custom_fields_default.value.empty? %>
+      <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '', @project.custom_fields_default.value.blank? %>
       <%= l(:label_none) %>
       <% @project.custom_fields_default.custom_field.enumerations.active.each do |element| %>
         </p>
