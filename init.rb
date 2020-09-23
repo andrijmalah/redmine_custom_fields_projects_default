@@ -1,4 +1,4 @@
-Redmine::Plugin.register :redmine_custom_fields_projects_default do
+Redmine::Plugin.register :custom_fields_projects_default_settings do
   name 'Redmine Custom Fields Projects Default plugin'
   author 'Andriy Malakhivskyy'
   description 'This is a plugin for Redmine'
