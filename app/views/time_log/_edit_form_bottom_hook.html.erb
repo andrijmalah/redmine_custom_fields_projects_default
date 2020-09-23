@@ -1,9 +1,7 @@
-!!!!!!!!!!!!!!!!!!!
-
 <% if @project.custom_fields_default %>  
   <%= javascript_tag do %>
     $(document).ready(function(){
-      $("input[name='time_entry[custom_field_values][<%= billable_custom_field_id %>]']").prop("disabled", <%= billable_disabled %>);
+      $("input[name='time_entry[custom_field_values][<%= billable_custom_field_id %>]']").prop("disabled", <%= billable_enable? %>);
     });
   <% end %>
 <% end %>

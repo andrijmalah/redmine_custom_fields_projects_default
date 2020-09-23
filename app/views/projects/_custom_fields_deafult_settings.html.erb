@@ -9,15 +9,21 @@
       ), id: 'default_custom_field'
     %>
     <p></p>
-    <%# byebug %>
     <%= l(:field_default_value) %>:
-    <%= select_tag 'project[custom_fields_default_attributes][value]', 
-      options_from_collection_for_select(
-        @project.custom_fields_default.custom_field.enumerations.active, 'id', 'name', 
-        @project.custom_fields_default ? @project.custom_fields_default.value : 0
-      ) 
-    %>
     </p>
+    <% if @project.custom_fields_default %>
+    </p>   
+      <%= radio_button_tag 'project[custom_fields_default_attributes][value]', '', @project.custom_fields_default.value.empty? %>
+      <%= l(:label_none) %>
+      <% @project.custom_fields_default.custom_field.enumerations.active.each do |element| %>
+        </p>
+        <%= radio_button_tag 'project[custom_fields_default_attributes][value]', element.id, 
+          @project.custom_fields_default.value == element.id.to_s
+        %>
+        <%= element.name %>
+      <% end %>
+    <% end %>  
+    </p>    
     <%= submit_tag(l(:button_save)) %>
   <% end %>
 </div>
