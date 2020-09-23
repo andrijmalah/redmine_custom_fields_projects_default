@@ -3,8 +3,8 @@ Redmine::Plugin.register :redmine_custom_fields_projects_default do
   author 'Andriy Malakhivskyy'
   description 'This is a plugin for Redmine'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  url 'https://github.com/andrijmalah/redmine_custom_fields_projects_default'
+  author_url 'https://github.com/andrijmalah'
 
   project_module :redmine_custom_fields_projects_default do
     permission :edit_custom_fields_project_default_settings, { edit_custom_fields_project_default_settings: [:edit, :index] }
