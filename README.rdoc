@@ -1,3 +1,6 @@
 = redmine_custom_fields_projects_default
 
-Description goes here
+
+Copy redmine_custom_fields_projects_default plugin to {RAILS_APP}/plugins on your redmine path
+
+Run bundle install –without development test RAILS_ENV=production
